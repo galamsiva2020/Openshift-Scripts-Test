@@ -1,0 +1,18 @@
+---
+##################################################
+#Variables used by docker and docker-storage roles
+#  Value below apply for "all" machines 
+#  Uncomment and change if they need these
+#  values are different for "workstations" servers.
+##################################################
+#registry_host: "registry.lab.example.com"
+#use_overlay2_driver: true
+#insecure_registry: false
+#run_docker_offline: yes
+
+
+# Storage device is different for "workstations"
+# There is no /dev/vdb device.  Leave this blank
+#docker_storage_device: 
+
+

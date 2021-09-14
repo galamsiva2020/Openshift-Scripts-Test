@@ -1,0 +1,3 @@
+---
+- name: "Give admin user proper permissions"
+  command: "oc adm policy {{ ocp_action }} {{ ocp_role }} {{ ocp_user }}"

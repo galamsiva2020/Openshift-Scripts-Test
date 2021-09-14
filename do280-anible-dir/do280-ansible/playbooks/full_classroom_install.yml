@@ -1,0 +1,10 @@
+---
+
+- import_playbook: prepare_install.yml
+
+- import_playbook: install_ocp.yml
+
+- import_playbook: post_install.yml
+
+...
+

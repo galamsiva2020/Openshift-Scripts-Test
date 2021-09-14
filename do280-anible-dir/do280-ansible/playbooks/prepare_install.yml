@@ -1,0 +1,18 @@
+---
+- name: "Host Preparation: Docker tasks"
+  hosts: nodes
+  roles:
+    - docker-storage
+    - docker-registry-cert
+    - openshift-node
+
+  #Tasks below were not handled by the roles above.
+  tasks:
+    - name: Student Account - Docker Access
+      user:
+        name: student
+        groups: docker
+        append: yes
+
+...
+

@@ -1,0 +1,14 @@
+#Modifications Needed for a Disconnected Install
+oreg_url=resistry.lab.example.com/openshift3/ose-${component}:${version}
+openshift_examples_modify_imagestreams=true
+openshift_docker_additional_registries=registry.lab.example.com
+openshift_docker_blocked_registries=registry.access.redhat.com,docker.io
+
+#Image Prefixes
+openshift_web_console_prefix=registry.lab.example.com/openshift3/ose-
+openshift_cockpit_deployer_prefix='registry.lab.example.com/openshift3/'
+openshift_service_catalog_image_prefix=registry.lab.example.com/openshift3/ose-
+template_service_broker_prefix=registry.lab.example.com/openshift3/ose-
+ansible_service_broker_image_prefix=registry.lab.example.com/openshift3/ose-
+ansible_service_broker_etcd_image_prefix=registry.lab.example.com/rhel7/
+

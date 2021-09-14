@@ -1,0 +1,9 @@
+---
+
+# Required prerequisites playbook provided by OpenShift.
+- import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
+
+# Playbook provided by OpenShift that deploys the cluster.
+- import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+
+

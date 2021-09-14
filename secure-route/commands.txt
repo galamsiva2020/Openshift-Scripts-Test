@@ -1,0 +1,23 @@
+# Login as developer
+oc login -u developer -p redhat https://master.lab.example.com
+
+# Create new application
+oc new-app
+  --docker-image=registry.lab.example.com/openshift/hello-openshift
+  --name=hello
+
+# Create a secure edge route
+oc create route edge
+  --service=hello
+  --hostname=hello.apps.lab.example.com
+  --key=hello.apps.lab.example.com.key
+  --cert=hello.apps.lab.example.com.crt
+
+# plain http
+curl http://hello.apps.lab.example.com
+
+# secure https
+curl -k -vvv https://hello.apps.lab.example.com
+
+# Pod IP
+curl -vvv http://<pod ip>:8080

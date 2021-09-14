@@ -1,0 +1,21 @@
+---
+
+- name: Restart Docker
+  hosts: nodes
+  tasks:
+    - name: Restart Docker
+      service:
+        name: docker
+        state: restarted
+        enabled: yes
+
+
+- name: Grant admin user cluster-admin privileges
+  hosts: masters[0]
+  roles:
+    - role: grant-ocp-role
+      ocp_action: add-cluster-role-to-user
+      ocp_role: cluster-admin
+      ocp_user: admin
+
+...

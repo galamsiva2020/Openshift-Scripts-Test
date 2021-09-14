@@ -1,0 +1,17 @@
+---
+
+- name: Install a File 
+  hosts: workstations
+  tasks:
+    - name: "Copy a sample file to each workstation."
+      copy:
+        contents: "{{ sample_content }}"
+        dest: /tmp/sample.txt
+
+- name: Hello OpenShift Enterprise v3.x
+  hosts: OSEv3
+  roles:
+    - hello
+
+...
+

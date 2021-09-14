@@ -1,0 +1,6 @@
+#OpenShift Networking Variables
+os_firewall_use_firewalld=true
+openshift_master_api_port=443
+openshift_master_console_port=443
+openshift_master_default_subdomain=apps.lab.example.com
+

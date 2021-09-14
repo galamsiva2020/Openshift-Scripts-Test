@@ -1,0 +1,151 @@
+2019-03-20 12:04:21,705 p=9469 u=student |  Using /home/student/DO280/labs/install-prepare/ansible.cfg as config file
+2019-03-20 12:04:21,945 p=9469 u=student |  PLAY [Verify Connectivity] *****************************************************
+2019-03-20 12:04:21,953 p=9469 u=student |  TASK [Test connectivity to machines.] ******************************************
+2019-03-20 12:04:22,849 p=9469 u=student |  ok: [node1.lab.example.com] => {"changed": false, "cmd": "whoami", "delta": "0:00:00.005198", "end": "2019-03-20 12:04:22.819699", "rc": 0, "start": "2019-03-20 12:04:22.814501", "stderr": "", "stderr_lines": [], "stdout": "root", "stdout_lines": ["root"]}
+2019-03-20 12:04:22,855 p=9469 u=student |  ok: [workstation.lab.example.com] => {"changed": false, "cmd": "whoami", "delta": "0:00:00.006870", "end": "2019-03-20 12:04:22.830617", "rc": 0, "start": "2019-03-20 12:04:22.823747", "stderr": "", "stderr_lines": [], "stdout": "root", "stdout_lines": ["root"]}
+2019-03-20 12:04:22,929 p=9469 u=student |  ok: [master.lab.example.com] => {"changed": false, "cmd": "whoami", "delta": "0:00:00.005281", "end": "2019-03-20 12:04:22.910329", "rc": 0, "start": "2019-03-20 12:04:22.905048", "stderr": "", "stderr_lines": [], "stdout": "root", "stdout_lines": ["root"]}
+2019-03-20 12:04:22,936 p=9469 u=student |  ok: [node2.lab.example.com] => {"changed": false, "cmd": "whoami", "delta": "0:00:00.005201", "end": "2019-03-20 12:04:22.916420", "rc": 0, "start": "2019-03-20 12:04:22.911219", "stderr": "", "stderr_lines": [], "stdout": "root", "stdout_lines": ["root"]}
+2019-03-20 12:04:22,961 p=9469 u=student |  ok: [services.lab.example.com] => {"changed": false, "cmd": "whoami", "delta": "0:00:00.004504", "end": "2019-03-20 12:04:22.943313", "rc": 0, "start": "2019-03-20 12:04:22.938809", "stderr": "", "stderr_lines": [], "stdout": "root", "stdout_lines": ["root"]}
+2019-03-20 12:04:22,963 p=9469 u=student |  PLAY RECAP *********************************************************************
+2019-03-20 12:04:22,963 p=9469 u=student |  master.lab.example.com     : ok=1    changed=0    unreachable=0    failed=0   
+2019-03-20 12:04:22,963 p=9469 u=student |  node1.lab.example.com      : ok=1    changed=0    unreachable=0    failed=0   
+2019-03-20 12:04:22,963 p=9469 u=student |  node2.lab.example.com      : ok=1    changed=0    unreachable=0    failed=0   
+2019-03-20 12:04:22,964 p=9469 u=student |  services.lab.example.com   : ok=1    changed=0    unreachable=0    failed=0   
+2019-03-20 12:04:22,964 p=9469 u=student |  workstation.lab.example.com : ok=1    changed=0    unreachable=0    failed=0   
+2019-03-20 12:05:16,698 p=9705 u=student |  PLAY [Host Preparation: Docker tasks] ******************************************
+2019-03-20 12:05:16,710 p=9705 u=student |  TASK [Gathering Facts] *********************************************************
+2019-03-20 12:05:17,490 p=9705 u=student |  ok: [node2.lab.example.com]
+2019-03-20 12:05:17,498 p=9705 u=student |  ok: [master.lab.example.com]
+2019-03-20 12:05:17,503 p=9705 u=student |  ok: [node1.lab.example.com]
+2019-03-20 12:05:17,508 p=9705 u=student |  TASK [firewall : Start/Enable Service] *****************************************
+2019-03-20 12:05:17,945 p=9705 u=student |  ok: [node1.lab.example.com]
+2019-03-20 12:05:17,996 p=9705 u=student |  ok: [master.lab.example.com]
+2019-03-20 12:05:17,997 p=9705 u=student |  ok: [node2.lab.example.com]
+2019-03-20 12:05:18,002 p=9705 u=student |  TASK [docker : Install Packages] ***********************************************
+2019-03-20 12:05:51,251 p=9705 u=student |  changed: [node2.lab.example.com] => (item=[u'docker', u'ca-certificates'])
+2019-03-20 12:05:51,627 p=9705 u=student |  changed: [master.lab.example.com] => (item=[u'docker', u'ca-certificates'])
+2019-03-20 12:05:51,831 p=9705 u=student |  changed: [node1.lab.example.com] => (item=[u'docker', u'ca-certificates'])
+2019-03-20 12:05:51,836 p=9705 u=student |  TASK [docker : Docker Group] ***************************************************
+2019-03-20 12:05:52,364 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:52,364 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:52,366 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:52,372 p=9705 u=student |  TASK [docker : Insecure Registries] ********************************************
+2019-03-20 12:05:52,836 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:52,836 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:52,841 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:52,846 p=9705 u=student |  TASK [docker : Remove Insecure Registries] *************************************
+2019-03-20 12:05:52,866 p=9705 u=student |  skipping: [master.lab.example.com]
+2019-03-20 12:05:52,870 p=9705 u=student |  skipping: [node1.lab.example.com]
+2019-03-20 12:05:52,877 p=9705 u=student |  skipping: [node2.lab.example.com]
+2019-03-20 12:05:52,883 p=9705 u=student |  TASK [docker : Add Local Lab Registry] *****************************************
+2019-03-20 12:05:53,241 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:53,243 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:53,263 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:53,269 p=9705 u=student |  TASK [docker : Block Online Registries] ****************************************
+2019-03-20 12:05:53,633 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:53,639 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:53,643 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:53,648 p=9705 u=student |  TASK [docker : UnBlock Online Registries] **************************************
+2019-03-20 12:05:53,673 p=9705 u=student |  skipping: [master.lab.example.com]
+2019-03-20 12:05:53,674 p=9705 u=student |  skipping: [node1.lab.example.com]
+2019-03-20 12:05:53,675 p=9705 u=student |  skipping: [node2.lab.example.com]
+2019-03-20 12:05:53,681 p=9705 u=student |  TASK [docker : Add Local Lab Registry] *****************************************
+2019-03-20 12:05:53,718 p=9705 u=student |  skipping: [node1.lab.example.com]
+2019-03-20 12:05:53,718 p=9705 u=student |  skipping: [node2.lab.example.com]
+2019-03-20 12:05:53,718 p=9705 u=student |  skipping: [master.lab.example.com]
+2019-03-20 12:05:53,724 p=9705 u=student |  TASK [docker : Enable DNS for Docker] ******************************************
+2019-03-20 12:05:53,742 p=9705 u=student |  skipping: [master.lab.example.com]
+2019-03-20 12:05:53,743 p=9705 u=student |  skipping: [node1.lab.example.com]
+2019-03-20 12:05:53,748 p=9705 u=student |  skipping: [node2.lab.example.com]
+2019-03-20 12:05:53,753 p=9705 u=student |  TASK [docker : (Re-)Start/Enable Service] **************************************
+2019-03-20 12:05:55,877 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:55,955 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:55,956 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:55,962 p=9705 u=student |  TASK [docker : Enable IP Forwarding] *******************************************
+2019-03-20 12:05:56,504 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:56,507 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:56,531 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:56,537 p=9705 u=student |  TASK [docker : firewalld zone dockerc exists] **********************************
+2019-03-20 12:05:57,264 p=9705 u=student |  ok: [node1.lab.example.com]
+2019-03-20 12:05:57,273 p=9705 u=student |  ok: [master.lab.example.com]
+2019-03-20 12:05:57,315 p=9705 u=student |  ok: [node2.lab.example.com]
+2019-03-20 12:05:57,321 p=9705 u=student |  TASK [docker : Firewall- Create Docker Zone] ***********************************
+2019-03-20 12:05:57,960 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:57,979 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:57,986 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:57,991 p=9705 u=student |  TASK [docker : Reload Firewall Service] ****************************************
+2019-03-20 12:05:58,886 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:58,897 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:58,917 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:58,926 p=9705 u=student |  TASK [docker : Firewall- Identify Docker Zone Source] **************************
+2019-03-20 12:05:59,720 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:05:59,723 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:05:59,737 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:05:59,743 p=9705 u=student |  TASK [docker : Firewall- Open Docker DNS] **************************************
+2019-03-20 12:06:00,364 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:00,394 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:00,411 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:00,417 p=9705 u=student |  TASK [docker-storage : Customize default /etc/sysconfig/docker-storage-setup] ***
+2019-03-20 12:06:00,440 p=9705 u=student |  skipping: [master.lab.example.com]
+2019-03-20 12:06:00,449 p=9705 u=student |  skipping: [node2.lab.example.com]
+2019-03-20 12:06:00,451 p=9705 u=student |  skipping: [node1.lab.example.com]
+2019-03-20 12:06:00,457 p=9705 u=student |  TASK [docker-storage : Customize /etc/sysconfig/docker-storage-setup using overlay2 storage driver] ***
+2019-03-20 12:06:01,374 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:01,378 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:01,401 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:01,406 p=9705 u=student |  TASK [docker-storage : Verify existence of /dev/docker-vg/docker-pool] *********
+2019-03-20 12:06:01,777 p=9705 u=student |  ok: [node1.lab.example.com]
+2019-03-20 12:06:01,781 p=9705 u=student |  ok: [node2.lab.example.com]
+2019-03-20 12:06:01,782 p=9705 u=student |  ok: [master.lab.example.com]
+2019-03-20 12:06:01,787 p=9705 u=student |  TASK [docker-storage : Stop docker] ********************************************
+2019-03-20 12:06:03,179 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:03,239 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:03,251 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:03,257 p=9705 u=student |  TASK [docker-storage : Remove loopback docker files] ***************************
+2019-03-20 12:06:03,719 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:03,725 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:03,729 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:03,735 p=9705 u=student |  TASK [docker-storage : Run docker-storage-setup] *******************************
+2019-03-20 12:06:04,675 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:04,715 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:04,720 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:04,725 p=9705 u=student |  TASK [docker-storage : Start and enable docker] ********************************
+2019-03-20 12:06:06,717 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:06,719 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:06,738 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:06,744 p=9705 u=student |  TASK [docker-registry-cert : Enable the Trust] *********************************
+2019-03-20 12:06:07,682 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:07,745 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:07,779 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:07,789 p=9705 u=student |  TASK [docker-registry-cert : Retrieve the certificate] *************************
+2019-03-20 12:06:08,532 p=9705 u=student |  changed: [node1.lab.example.com -> services.lab.example.com]
+2019-03-20 12:06:08,582 p=9705 u=student |  changed: [node2.lab.example.com -> services.lab.example.com]
+2019-03-20 12:06:08,584 p=9705 u=student |  changed: [master.lab.example.com -> services.lab.example.com]
+2019-03-20 12:06:08,590 p=9705 u=student |  TASK [docker-registry-cert : Copy the certificate] *****************************
+2019-03-20 12:06:09,273 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:09,285 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:09,310 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:09,316 p=9705 u=student |  TASK [docker-registry-cert : Update the Trust] *********************************
+2019-03-20 12:06:10,188 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:10,243 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:10,255 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:10,261 p=9705 u=student |  TASK [docker-registry-cert : Restart Docker] ***********************************
+2019-03-20 12:06:13,405 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:06:13,478 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:06:13,489 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:06:13,501 p=9705 u=student |  TASK [openshift-node : Deploy ssh key to root at all nodes] ********************
+2019-03-20 12:06:14,032 p=9705 u=student |  changed: [node1.lab.example.com] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvypmcIHPWO/+Tm/etzWvmGiyWognWbhTeyXSBMV/SfciyOVAu6o/LbskdMsTL2Gk2FzZABIlVfMzu8KkR80ZBVuPjHHj1fjxymE2nQVyax1CZxuFex6umdqOI9LIJ5458xafG2hivUUdTEUnHtb0mx6rNjRFekAmdPOTCZUqsuWO2cLgj3IUXDOaW7RFBEmVj66vTQm4AyXKW3dWg9WokIwA+CeXNci5yRLdK40dz6ZdFlG9NVCk+xj/qQBRNVL9Mf4Qnjal2zOJovYGYqvSJ9t9n54sQ70TiFZN7v1663ipcGH9OyTpc1kHJ2RDxgGLAbGDiq8u/3D3mtd5Ib5x5 student)
+2019-03-20 12:06:14,059 p=9705 u=student |  changed: [node2.lab.example.com] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvypmcIHPWO/+Tm/etzWvmGiyWognWbhTeyXSBMV/SfciyOVAu6o/LbskdMsTL2Gk2FzZABIlVfMzu8KkR80ZBVuPjHHj1fjxymE2nQVyax1CZxuFex6umdqOI9LIJ5458xafG2hivUUdTEUnHtb0mx6rNjRFekAmdPOTCZUqsuWO2cLgj3IUXDOaW7RFBEmVj66vTQm4AyXKW3dWg9WokIwA+CeXNci5yRLdK40dz6ZdFlG9NVCk+xj/qQBRNVL9Mf4Qnjal2zOJovYGYqvSJ9t9n54sQ70TiFZN7v1663ipcGH9OyTpc1kHJ2RDxgGLAbGDiq8u/3D3mtd5Ib5x5 student)
+2019-03-20 12:06:14,076 p=9705 u=student |  changed: [master.lab.example.com] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvypmcIHPWO/+Tm/etzWvmGiyWognWbhTeyXSBMV/SfciyOVAu6o/LbskdMsTL2Gk2FzZABIlVfMzu8KkR80ZBVuPjHHj1fjxymE2nQVyax1CZxuFex6umdqOI9LIJ5458xafG2hivUUdTEUnHtb0mx6rNjRFekAmdPOTCZUqsuWO2cLgj3IUXDOaW7RFBEmVj66vTQm4AyXKW3dWg9WokIwA+CeXNci5yRLdK40dz6ZdFlG9NVCk+xj/qQBRNVL9Mf4Qnjal2zOJovYGYqvSJ9t9n54sQ70TiFZN7v1663ipcGH9OyTpc1kHJ2RDxgGLAbGDiq8u/3D3mtd5Ib5x5 student)
+2019-03-20 12:06:14,083 p=9705 u=student |  TASK [openshift-node : Install required packages] ******************************
+2019-03-20 12:07:34,342 p=9705 u=student |  changed: [node1.lab.example.com] => (item=[u'wget', u'git', u'net-tools', u'bind-utils', u'iptables-services', u'bridge-utils', u'bash-completion', u'kexec-tools', u'sos', u'psacct', u'atomic-openshift-clients', u'atomic-openshift-utils', u'atomic-openshift'])
+2019-03-20 12:07:34,805 p=9705 u=student |  changed: [master.lab.example.com] => (item=[u'wget', u'git', u'net-tools', u'bind-utils', u'iptables-services', u'bridge-utils', u'bash-completion', u'kexec-tools', u'sos', u'psacct', u'atomic-openshift-clients', u'atomic-openshift-utils', u'atomic-openshift'])
+2019-03-20 12:07:35,273 p=9705 u=student |  changed: [node2.lab.example.com] => (item=[u'wget', u'git', u'net-tools', u'bind-utils', u'iptables-services', u'bridge-utils', u'bash-completion', u'kexec-tools', u'sos', u'psacct', u'atomic-openshift-clients', u'atomic-openshift-utils', u'atomic-openshift'])
+2019-03-20 12:07:35,279 p=9705 u=student |  TASK [Student Account - Docker Access] *****************************************
+2019-03-20 12:07:35,841 p=9705 u=student |  changed: [node2.lab.example.com]
+2019-03-20 12:07:35,852 p=9705 u=student |  changed: [node1.lab.example.com]
+2019-03-20 12:07:35,950 p=9705 u=student |  changed: [master.lab.example.com]
+2019-03-20 12:07:35,952 p=9705 u=student |  PLAY RECAP *********************************************************************
+2019-03-20 12:07:35,952 p=9705 u=student |  master.lab.example.com     : ok=28   changed=24   unreachable=0    failed=0   
+2019-03-20 12:07:35,952 p=9705 u=student |  node1.lab.example.com      : ok=28   changed=24   unreachable=0    failed=0   
+2019-03-20 12:07:35,952 p=9705 u=student |  node2.lab.example.com      : ok=28   changed=24   unreachable=0    failed=0   

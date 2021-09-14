@@ -1,0 +1,10 @@
+[defaults]
+remote_user = student
+inventory = ./inventory
+log_path = ./ansible.log
+
+[privilege_escalation]
+become = yes
+become_user = root
+become_method = sudo
+

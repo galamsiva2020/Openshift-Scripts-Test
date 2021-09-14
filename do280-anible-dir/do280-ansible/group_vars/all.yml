@@ -1,0 +1,17 @@
+---
+
+#Variables used by docker and docker-storage roles
+#  Value below apply for "all" machines 
+#  in the environment.
+registry_host: "registry.lab.example.com"
+use_overlay2_driver: true
+insecure_registry: false
+run_docker_offline: yes
+
+
+# Storage device is different for "nodes"
+# that "workstations". This value
+# is not set here... 
+#docker_storage_device: ""
+
+

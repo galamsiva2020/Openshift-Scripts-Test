@@ -1,0 +1,25 @@
+---
+- name: Deploy ssh key to root at all nodes
+  authorized_key:
+    user: root
+    key: "{{ item }}"
+  with_file:
+    - id_rsa.pub
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - wget
+    - git
+    - net-tools
+    - bind-utils
+    - iptables-services
+    - bridge-utils
+    - bash-completion
+    - kexec-tools
+    - sos
+    - psacct
+    - atomic-openshift-clients
+    - atomic-openshift-utils
+    - atomic-openshift   

@@ -1,0 +1,97 @@
+---
+- name: Install Packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - docker
+    - ca-certificates
+- name: Docker Group
+  group:
+    name: docker
+    state: present
+- name: Insecure Registries
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^\#\ INSECURE|^INSECURE'
+    line: INSECURE_REGISTRY='--insecure-registry {{ registry_local }}'
+    state: present
+  when: registry_local is defined and insecure_registry
+- name: Remove Insecure Registries
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^\#\ INSECURE|^INSECURE'
+    line: "#INSECURE_REGISTRY='--insecure-registry '"
+    state: present
+  when: not insecure_registry
+- name: Add Local Lab Registry
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^ADD_REGISTRY'
+    line: ADD_REGISTRY='--add-registry {{ registry_local }}'
+    state: present
+  when: run_docker_offline and registry_local is defined
+- name: Block Online Registries
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^BLOCK|^#\ BLOCK|^#BLOCK'
+    line: BLOCK_REGISTRY='--block-registry docker.io --block-registry registry.access.redhat.com'
+    state: present
+  when: run_docker_offline
+- name: UnBlock Online Registries
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^BLOCK|^#\ BLOCK|^#BLOCK'
+    line: "#BLOCK_REGISTRY='--block-registry '"
+    state: present
+  when: not run_docker_offline
+- name: Add Local Lab Registry
+  lineinfile:
+    dest: /etc/sysconfig/docker
+    regexp: '^ADD_REGISTRY'
+    line: ADD_REGISTRY='--add-registry registry.access.redhat.com --add-registry {{ registry_local }}'
+    state: present
+  when: not run_docker_offline and registry_local is defined
+- name: Enable DNS for Docker
+  lineinfile:
+    state: present
+    dest: /etc/sysconfig/docker
+    regexp: "^OPTIONS"
+    line: "OPTIONS='--dns {{ dns_ip }} --selinux-enabled --log-driver=journald --signature-verification=false'"
+  when: dns_docker
+- name: (Re-)Start/Enable Service
+  service:
+    name: docker
+    state: restarted
+    enabled: yes
+- name: Enable IP Forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    state: present
+    reload: yes
+    sysctl_file: /etc/sysctl.d/99-sysctl.conf
+- block:
+    - name: firewalld zone dockerc exists
+      command: firewall-cmd --info-zone dockerc
+      register: zoneadd
+      changed_when: false
+      failed_when: false
+    - name: Firewall- Create Docker Zone
+      command: firewall-cmd --permanent --new-zone dockerc
+      when: zoneadd.rc != 0
+    - name: Reload Firewall Service
+      command: firewall-cmd --reload
+      when: zoneadd.rc != 0
+- name: Firewall- Identify Docker Zone Source
+  firewalld:
+    source: 172.17.0.0/16
+    zone: dockerc
+    permanent: true
+    state: enabled
+    immediate: yes
+- name: Firewall- Open Docker DNS
+  firewalld:
+    port: 53/udp
+    zone: dockerc
+    permanent: true
+    state: enabled
+    immediate: yes

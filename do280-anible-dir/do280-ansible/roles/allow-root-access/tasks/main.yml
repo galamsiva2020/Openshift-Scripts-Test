@@ -1,0 +1,39 @@
+---
+- name: Create /root/.ssh
+  file:
+    path: /root/.ssh
+    mode: 0700
+    owner: root
+    group: root
+    state: directory
+
+- name: Copy private key
+  copy:
+    src: id_rsa
+    dest: /root/.ssh/id_rsa
+    mode: 0600
+    owner: root
+    group: root
+
+- name: Copy public key
+  copy:
+    src: id_rsa.pub
+    dest: /root/.ssh/id_rsa.pub
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Disable strict host key checking
+  copy:
+    src: config
+    dest: /root/.ssh/config
+    mode: 0600
+    owner: root
+    group: root
+
+- name: Deploy ssh key to root
+  authorized_key:
+    user: root
+    key: "{{ item }}"
+  with_file:
+    - id_rsa.pub
